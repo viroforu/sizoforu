@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>ENERC y AGC 10 Anos de corrupcion!</title>
+		<meta name="description" content="A-Frame Examples">
+		<script src="js/aframe-master.1.0.4.min.js"></script>
+		<script src="js/aframe-environment-component.min-old.js"></script>
+		<script src="js/script.js"></script>
+		<link rel="stylesheet" href="/style.css">
+		<!--
+		<script src="js/aframe-spe-particles-component.js"></script>
+   		<script src="js/aframe-spritesheet-animation.js"></script>
+		-->
+	
+	</head>
+
+	<body>
+
+		<!-- div used for enter button (user interaction to trigger audio) and fade-in -->
+		<div class="mainUI" id="uiDiv" oncontextmenu="return false;">
+			<div class="regionUI">
+				<div class="buttonUI">
+    				<img src="images/buttons/enter.png" id="buttonEnter" />
+				</div>
+			</div>
+		</div>
+
+
+		<a-scene environment="preset: starry; fog: 0;  flatShading: false; ground: hills; groundTexture: squares; groundColor: #000000; groundColor2: #00ff00; grid: none" cursor="rayOrigin: mouse" start>
+	  
+			<a-assets>
+				<img id="text" src="/images/enerc.png" crossorigin="anonymous" />
+
+				<video id="sizoVideo"  preload="auto" src="/video/ENERC.mp4" loop="false" playsinline  style="display:none" crossorigin="anonymous"
+				></video>
+		
+				<img id="fireball" src="images/fireball.png"/>	
+				<img id="fireballSheet" src="images/fireball-up.png"/>	
+    			<audio id="ambient" src="audio/ambient-night.mp3" preload="auto"></audio>
+    			<audio id="launch" src="audio/rocket-launch.wav" preload="auto"></audio>
+    			<audio id="burst1" src="audio/firework-burst-short.wav" preload="auto"></audio>
+    			<audio id="burst2" src="audio/firework-burst-medium.wav" preload="auto"></audio>
+    			<audio id="burst3" src="audio/firework-burst-long.wav" preload="auto"></audio>
+  			</a-assets>
+
+			<a-entity id="camera" camera look-controls position="0 1.6 0" ></a-entity>
+
+			<a-entity id="ambientSound" sound="src: #ambient; loop: true;"></a-entity>
+			<a-entity id="launchSound" sound="src: #launch; loop: false; poolSize: 4; volume: 0.025;"></a-entity>
+			<a-entity id="burst1Sound" sound="src: #burst1; loop: false; poolSize: 4; volume: 0.025;"></a-entity>
+			<a-entity id="burst2Sound" sound="src: #burst2; loop: false; poolSize: 4; volume: 0.025;"></a-entity>
+			<a-entity id="burst3Sound" sound="src: #burst3; loop: false; poolSize: 4; volume: 0.025;"></a-entity>
+
+			<a-plane
+				id = "video-border"
+				width = "17" height = "10"
+				position = "0 5 -20"
+				color = "#440000"
+				>		
+				<a-video  
+					src="#sizoVideo" 
+					width="16" height="9" 
+					position="0 0 0.1"
+					videohandler
+					visible="true"
+				></a-video>
+
+				<a-image 
+					rotation="0 0 5"
+					position="0.6 7 0.2"
+					geometry="primitive: plane; width: 10; height:3"
+					src="#text"
+				></a-image>
+
+			</a-plane>
+
+		</a-scene>
+
+	</body>
+</html>
